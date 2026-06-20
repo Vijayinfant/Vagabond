@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(15, 23, 42, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Page-Specific Theme Gradients (Premium Light Mesh Glows matching user image) */
+.theme-landing,
+.theme-auth,
+.theme-dashboard,
+.theme-trip-details,
+.theme-trip-create {
+  background-color: #F8FAFC;
+  background-image: 
+    radial-gradient(at 5% 5%, rgba(194, 46, 208, 0.08) 0px, transparent 65%),       /* #C22ED0 top-left */
+    radial-gradient(at 95% 95%, rgba(95, 250, 224, 0.12) 0px, transparent 65%),     /* #5FFAE0 bottom-right */
+    radial-gradient(at 50% 50%, rgba(194, 46, 208, 0.04) 0px, transparent 55%),     /* center purple/violet glow */
+    radial-gradient(at 85% 15%, rgba(194, 46, 208, 0.03) 0px, transparent 40%),     /* soft top-right purple blend */
+    radial-gradient(at 15% 85%, rgba(95, 250, 224, 0.03) 0px, transparent 40%);     /* soft bottom-left cyan blend */
+  background-attachment: fixed;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(194, 46, 208, 0.2);
+  box-shadow: 0 10px 30px -15px rgba(194, 46, 208, 0.12);
+  transform: translateY(-2px);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: #0F172A;
+  transition: all 0.2s;
+}
+
+.glass-input:focus {
+  border-color: #C22ED0;
+  box-shadow: 0 0 0 2px rgba(194, 46, 208, 0.15);
+  outline: none;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.3);
+}
+
+/* Custom glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px -3px rgba(194, 46, 208, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px 2px rgba(194, 46, 208, 0.3);
+  }
+}
+
+.pulse-glow-button {
+  animation: pulse-glow 3s infinite;
+}
